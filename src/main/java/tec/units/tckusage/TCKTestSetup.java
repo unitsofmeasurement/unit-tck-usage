@@ -28,7 +28,7 @@ package tec.units.tckusage;
 import java.util.Collection;
 import javax.measure.UnitConverter;
 
-import tec.units.tck.util.ServiceLoaderConfiguration;
+import tec.units.tck.util.ServiceConfiguration;
 
 /**
  * ServiceLoaderConfiguration setup class. This is an example TCK setup class, that has to be written by
@@ -36,7 +36,7 @@ import tec.units.tck.util.ServiceLoaderConfiguration;
  * <p>
  * Created by Werner Keil on 26.08.2015.
  */
-public final class TCKTestSetup implements ServiceLoaderConfiguration {
+public final class TCKTestSetup implements ServiceConfiguration {
 
 	@Override
 	public Collection<Class> getQuantityClasses() {

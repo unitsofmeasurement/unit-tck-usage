@@ -41,7 +41,7 @@
 		<api.artifactId>unit-api</api.artifactId>
 
 		<!-- ************ Other settings, Should normally not be changed. ************ -->
-		<tck.version>0.1-SNAPSHOT</tck.version>
+		<tck.version>0.2-SNAPSHOT</tck.version>
 		<jdkVersion>1.7</jdkVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
@@ -90,7 +90,7 @@
 		<dependency>
 			<groupId>tec.units</groupId>
 			<artifactId>unit-tck</artifactId>
-			<version>${tck.version}</version>
+			<version>0.2-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>${impl.groupId}</groupId>
@@ -98,7 +98,7 @@
 			<version>${impl.version}</version>
 			<type>${impl.packageType}</type>
 		</dependency>
-		 
+
 		<dependency>
 			<groupId>javax.measure</groupId>
 			<artifactId>${api.artifactId}</artifactId>
@@ -112,4 +112,17 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
+	<distributionManagement>
+		<repository>
+			<id>bintray-release</id>
+			<name>oss-jfrog-artifactory-release</name>
+			<url>https://oss.jfrog.org/artifactory/oss-release-local</url>
+		</repository>
+		<snapshotRepository>
+			<id>bintray-snapshot</id>
+			<name>oss-jfrog-artifactory-snapshot</name>
+			<url>https://oss.jfrog.org/artifactory/oss-snapshot-local</url>
+		</snapshotRepository>
+	</distributionManagement>
 </project>
