@@ -30,6 +30,7 @@ import java.util.Collection;
 
 import javax.measure.UnitConverter;
 
+import tec.units.ri.function.*;
 import tec.units.ri.quantity.NumberQuantity;
 import tec.units.ri.unit.*;
 import tec.units.tck.util.ServiceConfiguration;
@@ -56,8 +57,8 @@ public final class TCKTestSetup implements ServiceConfiguration {
 
 	@Override
 	public Collection<UnitConverter> getUnitConverters4Test() {
-		// TODO Auto-generated method stub
-		return null;
+		return Arrays.asList(new UnitConverter[] { new AddConverter(1), new ExpConverter(1), new LogConverter(1),
+				new MultiplyConverter(1), RationalConverter.of(1, 1), });
 	}
 
 }
