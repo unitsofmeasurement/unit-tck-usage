@@ -25,14 +25,19 @@
  */
 package tec.units.tckusage;
 
+import java.util.Arrays;
 import java.util.Collection;
+
 import javax.measure.UnitConverter;
 
+import tec.units.ri.quantity.NumberQuantity;
+import tec.units.ri.unit.*;
 import tec.units.tck.util.ServiceConfiguration;
 
 /**
- * ServiceLoaderConfiguration setup class. This is an example TCK setup class, that has to be written by
- * implementors to setup the JSR 363 TCK for running with their implementations.
+ * ServiceLoaderConfiguration setup class. This is an example TCK setup class,
+ * that has to be written by implementors to setup the JSR 363 TCK for running
+ * with their implementations.
  * <p>
  * Created by Werner Keil on 26.08.2015.
  */
@@ -40,14 +45,13 @@ public final class TCKTestSetup implements ServiceConfiguration {
 
 	@Override
 	public Collection<Class> getQuantityClasses() {
-		// TODO Auto-generated method stub
-		return null;
+		return Arrays.asList(new Class[] { NumberQuantity.class });
 	}
 
 	@Override
 	public Collection<Class> getUnitClasses() {
-		// TODO Auto-generated method stub
-		return null;
+		return Arrays.asList(new Class[] { BaseUnit.class, AlternateUnit.class,
+				ProductUnit.class, TransformedUnit.class });
 	}
 
 	@Override
