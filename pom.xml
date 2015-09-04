@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<parent> <!-- TODO use javamoney-examples as parent, as soon as it's on MavenCentral, 
+	<parent> <!-- TODO use uom-demos as parent, as soon as it's on MavenCentral, 
 			too -->
 		<groupId>tec.uom</groupId>
 		<artifactId>uom-parent</artifactId>
@@ -12,7 +12,7 @@
 	<artifactId>unit-tck-usage</artifactId>
 	<packaging>jar</packaging>
 	<groupId>tec.units</groupId>
-	<version>0.2</version>
+	<version>0.3-SNAPSHOT</version>
 	<name>JSR 363 - TCK Usage Example</name>
 	<description>JSR 363 provides an API for representing, transporting, and performing comprehensive calculations with
         Money and Currency.
@@ -41,7 +41,7 @@
 		<api.artifactId>unit-api</api.artifactId>
 
 		<!-- ************ Other settings, Should normally not be changed. ************ -->
-		<tck.version>0.3-SNAPSHOT</tck.version>
+		<tck.version>0.4-SNAPSHOT</tck.version>
 		<jdkVersion>1.7</jdkVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
@@ -104,7 +104,7 @@
 			<artifactId>unit-tck</artifactId>
 			<version>${tck.version}</version>
 			<exclusions>
-				<exclusion>  <!-- We exclude the RI to avoid possible interferance with the implementation under test -->
+				<exclusion>  <!-- We exclude the RI to avoid possible interference with the implementation under test -->
 					<groupId>tec.units</groupId>
 					<artifactId>unit-ri</artifactId>
 				</exclusion>
