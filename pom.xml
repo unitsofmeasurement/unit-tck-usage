@@ -104,7 +104,7 @@
 			<artifactId>unit-tck</artifactId>
 			<version>${tck.version}</version>
 			<exclusions>
-				<exclusion>  <!-- We only need this for the Java 8 version -->
+				<exclusion>  <!-- We exclude the RI to avoid possible interferance with the implementation under test -->
 					<groupId>tec.units</groupId>
 					<artifactId>unit-ri</artifactId>
 				</exclusion>
