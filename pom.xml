@@ -12,7 +12,7 @@
 	<artifactId>unit-tck-usage</artifactId>
 	<packaging>jar</packaging>
 	<groupId>tec.units</groupId>
-	<version>0.2-SNAPSHOT</version>
+	<version>0.2</version>
 	<name>JSR 363 - TCK Usage Example</name>
 	<description>JSR 363 provides an API for representing, transporting, and performing comprehensive calculations with
         Money and Currency.
