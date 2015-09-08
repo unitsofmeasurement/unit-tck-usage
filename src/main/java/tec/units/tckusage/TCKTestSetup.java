@@ -40,7 +40,7 @@ import tec.units.tck.util.ServiceConfiguration;
  * that has to be written by implementors to setup the JSR 363 TCK for running
  * with their implementations.
  * <p>
- * Created by Werner Keil on 26.08.2015.
+ * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
  */
 public final class TCKTestSetup implements ServiceConfiguration {
 
