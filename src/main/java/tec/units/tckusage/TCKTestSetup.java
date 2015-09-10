@@ -30,9 +30,9 @@ import java.util.Collection;
 
 import javax.measure.UnitConverter;
 
-import tec.units.ri.function.*;
-import tec.units.ri.quantity.NumberQuantity;
-import tec.units.ri.unit.*;
+import tec.uom.impl.enums.function.*;
+import tec.uom.impl.enums.quantity.*;
+import tec.uom.impl.enums.unit.*;
 import tec.units.tck.util.ServiceConfiguration;
 
 /**
@@ -46,19 +46,18 @@ public final class TCKTestSetup implements ServiceConfiguration {
 
 	@Override
 	public Collection<Class> getQuantityClasses() {
-		return Arrays.asList(new Class[] { NumberQuantity.class });
+		return Arrays.asList(new Class[] { TemperatureAmount.class, TimeAmount.class });
 	}
 
 	@Override
 	public Collection<Class> getUnitClasses() {
-		return Arrays.asList(new Class[] { BaseUnit.class, AlternateUnit.class,
-				ProductUnit.class, TransformedUnit.class });
+		return Arrays.asList(new Class[] { BitRateUnit.class, BitUnit.class,
+				DimensionlessUnit.class, DistanceUnit.class });
 	}
 
 	@Override
 	public Collection<UnitConverter> getUnitConverters4Test() {
-		return Arrays.asList(new UnitConverter[] { new AddConverter(1), new ExpConverter(1), new LogConverter(1),
-				new MultiplyConverter(1), RationalConverter.of(1, 1), });
+		return Arrays.asList(new UnitConverter[] { AbstractConverter.IDENTITY });
 	}
 
 }

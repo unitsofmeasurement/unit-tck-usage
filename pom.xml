@@ -31,8 +31,8 @@
 		<!-- ************ TCK Setup ****************** -->
 
 		<!-- 1) Your implementation artifact to be tested. -->
-		<impl.groupId>tec.units</impl.groupId>
-		<impl.artifactId>unit-ri</impl.artifactId>
+		<impl.groupId>tec.uom.impl</impl.groupId>
+		<impl.artifactId>uom-impl-enum</impl.artifactId>
 		<impl.version>0.8-SNAPSHOT</impl.version>
 		<impl.packageType>jar</impl.packageType>
 
