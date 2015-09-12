@@ -56,8 +56,8 @@
 	</ciManagement>
 
 	<issueManagement>
-		<system>JIRA</system>
-		<url>http://java.net/jira/browse/UNITSOFMEASUREMENT</url>
+		<system>GitHub</system>
+		<url>https://github.com/unitsofmeasurement/unit-tck-usage</url>
 	</issueManagement>
 
 	<scm>
