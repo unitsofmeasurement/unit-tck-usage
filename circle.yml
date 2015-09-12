@@ -8,6 +8,6 @@ machine:
 #    UOM_VERSION: 0.8-SNAPSHOT
 test:
    override:
-     - mvn test -Dtec.units.tck.profile=minimal -Dtec.units.tck.reportFile=$CIRCLE_TEST_REPORTS/tck-results.txt
+     - mvn test -Dtec.units.tck.reportFile=$CIRCLE_TEST_REPORTS/tck-results.txt
 #   post:
 #     - cp $CIRCLE_TEST_REPORTS/*.* $CIRCLE_ARTIFACTS
