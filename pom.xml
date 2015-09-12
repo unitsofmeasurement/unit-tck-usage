@@ -30,8 +30,8 @@
 		<!-- ************ TCK Setup ****************** -->
 
 		<!-- 1) Your implementation artifact to be tested. -->
-		<impl.groupId>tec.uom.impl</impl.groupId>
-		<impl.artifactId>uom-impl-enum</impl.artifactId>
+		<impl.groupId>tec.uom</impl.groupId>
+		<impl.artifactId>uom-se</impl.artifactId>
 		<impl.version>0.8-SNAPSHOT</impl.version>
 		<impl.packageType>jar</impl.packageType>
 
@@ -41,7 +41,7 @@
 
 		<!-- ************ Other settings, Should normally not be changed. ************ -->
 		<tck.version>0.4-SNAPSHOT</tck.version>
-		<jdkVersion>1.7</jdkVersion>
+		<jdkVersion>1.8</jdkVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
