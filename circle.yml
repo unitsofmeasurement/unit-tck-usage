@@ -9,7 +9,7 @@
 test:
    override:
      - mvn test -Dtec.units.tck.profile=minimal -Dtec.units.tck.reportFile=$CIRCLE_TEST_REPORTS/tck-results.txt
-#  post:
-#    - cp $HOME/.m2/repository/tec/uom/tools/uom-shared-tools/$UOM_VERSION/*.jar $CIRCLE_ARTIFACTS
+  post:
+    - cp $CIRCLE_TEST_REPORTS/*.* $CIRCLE_ARTIFACTS
 #    - cp $HOME/.m2/repository/tec/uom/tools/uom-cldr-tools/$UOM_VERSION/*.jar $CIRCLE_ARTIFACTS
 #    - cp $HOME/.m2/repository/tec/uom/tools/uom-obix-tools/$UOM_VERSION/*.jar $CIRCLE_ARTIFACTS
