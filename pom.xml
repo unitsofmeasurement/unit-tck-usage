@@ -16,8 +16,7 @@
 	<name>JSR 363 - TCK Usage Example</name>
 	<description>JSR 363 provides an API for representing, transporting, and performing comprehensive calculations with
         Money and Currency.
-        This module executes the JSR 363 TCK and tests the current JSR 363 Reference Implementation impl. based on Java 8.
-    </description>
+        This module executes the JSR 363 TCK and tests the Lightweight JSR 363 Implementation based on Java enums.</description>
 
 	<licenses>
 		<license>
