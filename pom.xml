@@ -54,10 +54,10 @@
 		<url>https://circleci.com/gh/unitsofmeasurement/unit-tck-usage</url>
 	</ciManagement>
 
-	<issueManagement>
-		<system>JIRA</system>
-		<url>http://java.net/jira/browse/UNITSOFMEASUREMENT</url>
-	</issueManagement>
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/unitsofmeasurement/unit-tck-usage</url>
+    </issueManagement>
 
 	<scm>
 		<connection>scm:git:https://github.com/unitsofmeasurement/unit-tck-usage.git</connection>
