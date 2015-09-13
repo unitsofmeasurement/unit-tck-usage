@@ -6,10 +6,5 @@ This branch tests the [Lightweight Units of Measurement Implementation based on 
 [![Circle CI](https://circleci.com/gh/unitsofmeasurement/unit-tck-usage/tree/enums.svg?style=svg)](https://circleci.com/gh/unitsofmeasurement/unit-tck-usage/tree/enums)
 [![License](http://img.shields.io/badge/license-BSD3-blue.svg?style=flat-square)](http://opensource.org/licenses/BSD-3-Clause)
 
-The TCK can be started either:
+The [TCK](../../../unit-tck) can be started by running it via TestNG (`RunTCKTest` class)
 
-by running
-
-java tec.units.tck.TCKRunner
-
-or by starting the TCK via JUnit (RunTCK test class)

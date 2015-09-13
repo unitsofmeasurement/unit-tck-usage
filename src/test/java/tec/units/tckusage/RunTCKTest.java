@@ -27,17 +27,16 @@ package tec.units.tckusage;
 
 import static org.testng.Assert.assertEquals;
 
+import javax.tools.Tool;
 import org.testng.annotations.Test;
-
 import tec.units.tck.TCKRunner;
 
 public class RunTCKTest{
 
     @Test
     public void runTCK(){
-//        TCKRunner.main(new String[0]);
-        final TCKRunner runner = new TCKRunner();
+        final Tool runner = new TCKRunner();
         int returnCode = runner.run(System.in, System.out, System.err, new String[0]);
-//        assertEquals(0, returnCode);
+        assertEquals(0, returnCode);
     }
 }
