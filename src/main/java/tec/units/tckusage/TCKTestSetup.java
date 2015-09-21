@@ -27,7 +27,11 @@ package tec.units.tckusage;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.measure.Unit;
 import javax.measure.UnitConverter;
 
 import tec.uom.impl.enums.function.*;
@@ -52,9 +56,18 @@ public final class TCKTestSetup implements ServiceConfiguration {
 	@Override
 	public Collection<Class> getUnitClasses() {
 		return Arrays.asList(new Class[] { BitRateUnit.class, BitUnit.class,
-				DimensionlessUnit.class, DistanceUnit.class });
+				DimensionlessUnit.class, DistanceUnit.class, TemperatureUnit.class, TimeUnit.class });
 	}
 
+    @Override
+    public Collection<? extends Unit<?>> getUnits4Test(){
+    	final Set<Unit<?>> units = new HashSet<Unit<?>>();
+    	units.add(DistanceUnit.METRE);
+    	units.add(TemperatureUnit.KELVIN);
+    	units.add(TimeUnit.SECOND);
+    	return Collections.unmodifiableSet(units);
+    }
+	
 	@Override
 	public Collection<UnitConverter> getUnitConverters4Test() {
 		return Arrays.asList(new UnitConverter[] { AbstractConverter.IDENTITY });
