@@ -48,18 +48,15 @@ import tec.units.tck.util.ServiceConfiguration;
  */
 public final class TCKTestSetup implements ServiceConfiguration {
 
-	@Override
 	public Collection<Class> getQuantityClasses() {
 		return Arrays.asList(new Class[] { TemperatureAmount.class, TimeAmount.class });
 	}
 
-	@Override
 	public Collection<Class> getUnitClasses() {
 		return Arrays.asList(new Class[] { BitRateUnit.class, BitUnit.class,
 				DimensionlessUnit.class, DistanceUnit.class, TemperatureUnit.class, TimeUnit.class });
 	}
 
-    @Override
     public Collection<? extends Unit<?>> getUnits4Test(){
     	final Set<Unit<?>> units = new HashSet<Unit<?>>();
     	units.add(DistanceUnit.METRE);
@@ -68,7 +65,6 @@ public final class TCKTestSetup implements ServiceConfiguration {
     	return Collections.unmodifiableSet(units);
     }
 	
-	@Override
 	public Collection<UnitConverter> getUnitConverters4Test() {
 		return Arrays.asList(new UnitConverter[] { AbstractConverter.IDENTITY });
 	}
