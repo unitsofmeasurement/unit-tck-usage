@@ -28,6 +28,7 @@ package tec.units.tckusage;
 import java.util.Arrays;
 import java.util.Collection;
 
+import javax.measure.Unit;
 import javax.measure.UnitConverter;
 
 import tec.units.ri.function.*;
@@ -41,20 +42,28 @@ import tec.units.tck.util.ServiceConfiguration;
  * with their implementations.
  * <p>
  * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
+ * @version 0.5, September 21, 2015
  */
 public final class TCKTestSetup implements ServiceConfiguration {
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public Collection<Class> getQuantityClasses() {
 		return Arrays.asList(new Class[] { NumberQuantity.class });
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public Collection<Class> getUnitClasses() {
 		return Arrays.asList(new Class[] { BaseUnit.class, AlternateUnit.class,
 				ProductUnit.class, TransformedUnit.class });
 	}
 
+    @Override
+    public Collection<? extends Unit<?>> getUnits4Test(){
+    	return Units.getInstance().getUnits();
+    }
+    
 	@Override
 	public Collection<UnitConverter> getUnitConverters4Test() {
 		return Arrays.asList(new UnitConverter[] { new AddConverter(1), new ExpConverter(1), new LogConverter(1),
