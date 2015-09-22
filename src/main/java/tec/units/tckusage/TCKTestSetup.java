@@ -25,9 +25,12 @@
  */
 package tec.units.tckusage;
 
+import static tec.units.ri.quantity.QuantityDimension.*;
+
 import java.util.Arrays;
 import java.util.Collection;
 
+import javax.measure.Dimension;
 import javax.measure.Unit;
 import javax.measure.UnitConverter;
 
@@ -42,7 +45,7 @@ import tec.units.tck.util.ServiceConfiguration;
  * with their implementations.
  * <p>
  * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.5, September 21, 2015
+ * @version 0.5.1, September 22, 2015
  */
 public final class TCKTestSetup implements ServiceConfiguration {
 
@@ -70,4 +73,10 @@ public final class TCKTestSetup implements ServiceConfiguration {
 				new MultiplyConverter(1), RationalConverter.of(1, 1), });
 	}
 
+	@Override
+	public Collection<Dimension> getBaseDimensions() {
+		return Arrays
+                .asList(new Dimension[] { AMOUNT_OF_SUBSTANCE, ELECTRIC_CURRENT, LENGTH, LUMINOUS_INTENSITY, 
+                		MASS, TEMPERATURE, TIME });
+	}
 }
