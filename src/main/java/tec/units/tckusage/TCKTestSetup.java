@@ -25,10 +25,22 @@
  */
 package tec.units.tckusage;
 
+import static tec.uom.se.quantity.QuantityDimension.AMOUNT_OF_SUBSTANCE;
+import static tec.uom.se.quantity.QuantityDimension.ELECTRIC_CURRENT;
+import static tec.uom.se.quantity.QuantityDimension.LENGTH;
+import static tec.uom.se.quantity.QuantityDimension.LUMINOUS_INTENSITY;
+import static tec.uom.se.quantity.QuantityDimension.MASS;
+import static tec.uom.se.quantity.QuantityDimension.TEMPERATURE;
+import static tec.uom.se.quantity.QuantityDimension.TIME;
+
 import java.util.Arrays;
 import java.util.Collection;
-
+import javax.measure.Dimension;
+import javax.measure.Unit;
 import javax.measure.UnitConverter;
+import javax.measure.spi.Bootstrap;
+import javax.measure.spi.SystemOfUnits;
+import javax.measure.spi.SystemOfUnitsService;
 
 import tec.uom.se.function.*;
 import tec.uom.se.quantity.*;
@@ -53,6 +65,24 @@ public final class TCKTestSetup implements ServiceConfiguration {
 	public Collection<Class> getUnitClasses() {
 		return Arrays.asList(new Class[] { BaseUnit.class, AlternateUnit.class, AnnotatedUnit.class,
 				ProductUnit.class, TransformedUnit.class });
+	}
+	
+    @Override
+    public Collection<? extends Unit<?>> getUnits4Test(){
+//    	Unit<Length> m = Units.METRE;
+//    	final Set<? extends Unit<?>> units = Units.getInstance().getUnits();
+//    	return units;
+    	SystemOfUnitsService service = Bootstrap
+				.getService(SystemOfUnitsService.class);
+    	SystemOfUnits sou = service.getSystemOfUnits();
+    	return sou.getUnits();
+    }
+
+	@Override
+	public Collection<Dimension> getBaseDimensions() {
+		return Arrays
+                .asList(new Dimension[] { AMOUNT_OF_SUBSTANCE, ELECTRIC_CURRENT, LENGTH, LUMINOUS_INTENSITY, 
+                		MASS, TEMPERATURE, TIME });
 	}
 
 	@Override

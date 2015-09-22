@@ -15,7 +15,7 @@
 	<version>0.3-SNAPSHOT</version>
 	<name>JSR 363 - TCK Usage Example</name>
 	<description>JSR 363 provides an API for representing, transporting, and performing comprehensive calculations with
-        Money and Currency.
+        Units of Measurement.
         This module executes the JSR 363 TCK and tests the Lightweight JSR 363 Implementation based on Java enums.</description>
 
 	<licenses>
@@ -40,7 +40,7 @@
 		<api.artifactId>unit-api</api.artifactId>
 
 		<!-- ************ Other settings, Should normally not be changed. ************ -->
-		<tck.version>0.4-SNAPSHOT</tck.version>
+		<tck.version>0.5-SNAPSHOT</tck.version>
 		<jdkVersion>1.8</jdkVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
