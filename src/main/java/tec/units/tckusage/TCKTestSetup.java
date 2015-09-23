@@ -33,6 +33,7 @@ import java.util.Collection;
 import javax.measure.Dimension;
 import javax.measure.Unit;
 import javax.measure.UnitConverter;
+import javax.measure.quantity.*;
 
 import tec.units.ri.function.*;
 import tec.units.ri.quantity.NumberQuantity;
@@ -45,20 +46,18 @@ import tec.units.tck.util.ServiceConfiguration;
  * with their implementations.
  * <p>
  * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.5.1, September 22, 2015
+ * @version 0.5.2, September 23, 2015
  */
 public final class TCKTestSetup implements ServiceConfiguration {
 
-	@SuppressWarnings("rawtypes")
 	@Override
-	public Collection<Class> getQuantityClasses() {
-		return Arrays.asList(new Class[] { NumberQuantity.class });
+	public Collection<Class<?>> getQuantityClasses() {
+		return Arrays.asList(new Class<?>[] { NumberQuantity.class });
 	}
 
-	@SuppressWarnings("rawtypes")
 	@Override
-	public Collection<Class> getUnitClasses() {
-		return Arrays.asList(new Class[] { BaseUnit.class, AlternateUnit.class,
+	public Collection<Class<?>> getUnitClasses() {
+		return Arrays.asList(new Class<?>[] { BaseUnit.class, AlternateUnit.class,
 				ProductUnit.class, TransformedUnit.class });
 	}
 
@@ -78,5 +77,18 @@ public final class TCKTestSetup implements ServiceConfiguration {
 		return Arrays
                 .asList(new Dimension[] { AMOUNT_OF_SUBSTANCE, ELECTRIC_CURRENT, LENGTH, LUMINOUS_INTENSITY, 
                 		MASS, TEMPERATURE, TIME });
+	}
+	
+	@Override
+	public Collection<Class<?>> getSupportedQuantityTypes() {
+		return Arrays
+                .asList(new Class<?>[] { Acceleration.class, AmountOfSubstance.class, Angle.class, Area.class,
+                		Length.class, Mass.class  });
+	}
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@Override
+	public Unit getUnit4Type(Class quantityType) {
+		return Units.getInstance().getUnit(quantityType);
 	}
 }
