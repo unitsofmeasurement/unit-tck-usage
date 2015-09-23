@@ -50,36 +50,30 @@ import tec.units.tck.util.ServiceConfiguration;
  */
 public final class TCKTestSetup implements ServiceConfiguration {
 
-	@Override
 	public Collection<Class<?>> getQuantityClasses() {
 		return Arrays.asList(new Class<?>[] { NumberQuantity.class });
 	}
 
-	@Override
 	public Collection<Class<?>> getUnitClasses() {
 		return Arrays.asList(new Class<?>[] { BaseUnit.class, AlternateUnit.class,
 				ProductUnit.class, TransformedUnit.class });
 	}
 
-    @Override
     public Collection<? extends Unit<?>> getUnits4Test(){
     	return Units.getInstance().getUnits();
     }
     
-	@Override
 	public Collection<UnitConverter> getUnitConverters4Test() {
 		return Arrays.asList(new UnitConverter[] { new AddConverter(1), new ExpConverter(1), new LogConverter(1),
 				new MultiplyConverter(1), RationalConverter.of(1, 1), });
 	}
 
-	@Override
 	public Collection<Dimension> getBaseDimensions() {
 		return Arrays
                 .asList(new Dimension[] { AMOUNT_OF_SUBSTANCE, ELECTRIC_CURRENT, LENGTH, LUMINOUS_INTENSITY, 
                 		MASS, TEMPERATURE, TIME });
 	}
 	
-	@Override
 	public Collection<Class<?>> getSupportedQuantityTypes() {
 		return Arrays
                 .asList(new Class<?>[] { Acceleration.class, AmountOfSubstance.class, Angle.class, Area.class,
@@ -87,7 +81,6 @@ public final class TCKTestSetup implements ServiceConfiguration {
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	@Override
 	public Unit getUnit4Type(Class quantityType) {
 		return Units.getInstance().getUnit(quantityType);
 	}
