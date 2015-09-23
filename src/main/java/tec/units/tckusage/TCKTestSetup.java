@@ -50,12 +50,12 @@ import tec.units.tck.util.ServiceConfiguration;
  */
 public final class TCKTestSetup implements ServiceConfiguration {
 
-	public Collection<Class<?>> getQuantityClasses() {
-		return Arrays.asList(new Class<?>[] { NumberQuantity.class });
+	public Collection<Class> getQuantityClasses() {
+		return Arrays.asList(new Class[] { NumberQuantity.class });
 	}
 
-	public Collection<Class<?>> getUnitClasses() {
-		return Arrays.asList(new Class<?>[] { BaseUnit.class, AlternateUnit.class,
+	public Collection<Class> getUnitClasses() {
+		return Arrays.asList(new Class[] { BaseUnit.class, AlternateUnit.class,
 				ProductUnit.class, TransformedUnit.class });
 	}
 
@@ -74,9 +74,9 @@ public final class TCKTestSetup implements ServiceConfiguration {
                 		MASS, TEMPERATURE, TIME });
 	}
 	
-	public Collection<Class<?>> getSupportedQuantityTypes() {
+	public Collection<Class> getSupportedQuantityTypes() {
 		return Arrays
-                .asList(new Class<?>[] { Acceleration.class, AmountOfSubstance.class, Angle.class, Area.class,
+                .asList(new Class[] { Acceleration.class, AmountOfSubstance.class, Angle.class, Area.class,
                 		Length.class, Mass.class  });
 	}
 	
