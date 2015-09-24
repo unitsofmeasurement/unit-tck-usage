@@ -37,6 +37,7 @@ import javax.measure.quantity.*;
 
 import tec.units.ri.function.*;
 import tec.units.ri.quantity.NumberQuantity;
+import tec.units.ri.quantity.QuantityDimension;
 import tec.units.ri.unit.*;
 import tec.units.tck.util.ServiceConfiguration;
 
@@ -46,14 +47,16 @@ import tec.units.tck.util.ServiceConfiguration;
  * with their implementations.
  * <p>
  * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.5.2, September 23, 2015
+ * @version 0.6, September 24, 2015
  */
-public final class TCKTestSetup implements ServiceConfiguration {
+public final class TestConfiguration implements ServiceConfiguration {
 
+	@SuppressWarnings("rawtypes")
 	public Collection<Class> getQuantityClasses() {
 		return Arrays.asList(new Class[] { NumberQuantity.class });
 	}
 
+	@SuppressWarnings("rawtypes")
 	public Collection<Class> getUnitClasses() {
 		return Arrays.asList(new Class[] { BaseUnit.class, AlternateUnit.class,
 				ProductUnit.class, TransformedUnit.class });
@@ -68,12 +71,20 @@ public final class TCKTestSetup implements ServiceConfiguration {
 				new MultiplyConverter(1), RationalConverter.of(1, 1), });
 	}
 
+	@SuppressWarnings("rawtypes")
+	@Override
+    public Collection<Class> getDimensionClasses() {
+            return Arrays
+                    .asList(new Class[]{QuantityDimension.class});
+    }
+	
 	public Collection<Dimension> getBaseDimensions() {
 		return Arrays
                 .asList(new Dimension[] { AMOUNT_OF_SUBSTANCE, ELECTRIC_CURRENT, LENGTH, LUMINOUS_INTENSITY, 
                 		MASS, TEMPERATURE, TIME });
 	}
 	
+	@SuppressWarnings("rawtypes")
 	public Collection<Class> getSupportedQuantityTypes() {
 		return Arrays
                 .asList(new Class[] { Acceleration.class, AmountOfSubstance.class, Angle.class, Area.class,
