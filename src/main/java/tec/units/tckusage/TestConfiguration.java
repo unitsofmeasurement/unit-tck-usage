@@ -72,7 +72,6 @@ public final class TestConfiguration implements ServiceConfiguration {
 	}
 
 	@SuppressWarnings("rawtypes")
-	@Override
     public Collection<Class> getDimensionClasses() {
             return Arrays
                     .asList(new Class[]{QuantityDimension.class});
