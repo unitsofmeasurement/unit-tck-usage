@@ -33,8 +33,11 @@ import java.util.Collection;
 import javax.measure.Dimension;
 import javax.measure.Unit;
 import javax.measure.UnitConverter;
+import javax.measure.format.UnitFormat;
 import javax.measure.quantity.*;
 
+import tec.units.ri.format.EBNFUnitFormat;
+import tec.units.ri.format.SimpleUnitFormat;
 import tec.units.ri.function.*;
 import tec.units.ri.quantity.NumberQuantity;
 import tec.units.ri.quantity.QuantityDimension;
@@ -46,8 +49,9 @@ import tec.units.tck.util.ServiceConfiguration;
  * that has to be written by implementors to setup the JSR 363 TCK for running
  * with their implementations.
  * <p>
- * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.6, September 24, 2015
+ * 
+ * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
+ * @version 0.6.1, September 25, 2015
  */
 public final class TestConfiguration implements ServiceConfiguration {
 
@@ -62,34 +66,39 @@ public final class TestConfiguration implements ServiceConfiguration {
 				ProductUnit.class, TransformedUnit.class });
 	}
 
-    public Collection<? extends Unit<?>> getUnits4Test(){
-    	return Units.getInstance().getUnits();
-    }
-    
+	public Collection<? extends Unit<?>> getUnits4Test() {
+		return Units.getInstance().getUnits();
+	}
+
 	public Collection<UnitConverter> getUnitConverters4Test() {
-		return Arrays.asList(new UnitConverter[] { new AddConverter(1), new ExpConverter(1), new LogConverter(1),
+		return Arrays.asList(new UnitConverter[] { new AddConverter(1),
+				new ExpConverter(1), new LogConverter(1),
 				new MultiplyConverter(1), RationalConverter.of(1, 1), });
 	}
 
-	@SuppressWarnings("rawtypes")
-    public Collection<Class> getDimensionClasses() {
-            return Arrays
-                    .asList(new Class[]{QuantityDimension.class});
-    }
-	
-	public Collection<Dimension> getBaseDimensions() {
-		return Arrays
-                .asList(new Dimension[] { AMOUNT_OF_SUBSTANCE, ELECTRIC_CURRENT, LENGTH, LUMINOUS_INTENSITY, 
-                		MASS, TEMPERATURE, TIME });
+	public Collection<UnitFormat> getUnitFormats4Test() {
+		return Arrays.asList(new UnitFormat[] { SimpleUnitFormat.getInstance(),
+				EBNFUnitFormat.getInstance() });
 	}
-	
+
+	@SuppressWarnings("rawtypes")
+	public Collection<Class> getDimensionClasses() {
+		return Arrays.asList(new Class[] { QuantityDimension.class });
+	}
+
+	public Collection<Dimension> getBaseDimensions() {
+		return Arrays.asList(new Dimension[] { AMOUNT_OF_SUBSTANCE,
+				ELECTRIC_CURRENT, LENGTH, LUMINOUS_INTENSITY, MASS,
+				TEMPERATURE, TIME });
+	}
+
 	@SuppressWarnings("rawtypes")
 	public Collection<Class> getSupportedQuantityTypes() {
-		return Arrays
-                .asList(new Class[] { Acceleration.class, AmountOfSubstance.class, Angle.class, Area.class,
-                		Length.class, Mass.class  });
+		return Arrays.asList(new Class[] { Acceleration.class,
+				AmountOfSubstance.class, Angle.class, Area.class, Length.class,
+				Mass.class });
 	}
-	
+
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public Unit getUnit4Type(Class quantityType) {
 		return Units.getInstance().getUnit(quantityType);
