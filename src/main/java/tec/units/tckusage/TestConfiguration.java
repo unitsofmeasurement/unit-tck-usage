@@ -77,8 +77,7 @@ public final class TestConfiguration implements ServiceConfiguration {
 	}
 
 	public Collection<UnitFormat> getUnitFormats4Test() {
-		return Arrays.asList(new UnitFormat[] { SimpleUnitFormat.getInstance(),
-				EBNFUnitFormat.getInstance() });
+		return Arrays.asList(new UnitFormat[] { SimpleUnitFormat.getInstance() });
 	}
 
 	@SuppressWarnings("rawtypes")
