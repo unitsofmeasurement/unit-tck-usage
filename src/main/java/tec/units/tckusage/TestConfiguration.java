@@ -36,7 +36,6 @@ import javax.measure.UnitConverter;
 import javax.measure.format.UnitFormat;
 import javax.measure.quantity.*;
 
-import tec.units.ri.format.EBNFUnitFormat;
 import tec.units.ri.format.SimpleUnitFormat;
 import tec.units.ri.function.*;
 import tec.units.ri.quantity.NumberQuantity;
@@ -45,13 +44,13 @@ import tec.units.ri.unit.*;
 import tec.units.tck.util.ServiceConfiguration;
 
 /**
- * ServiceLoaderConfiguration setup class. This is an example TCK setup class,
+ * ServiceConfiguration setup class. This is an example TCK setup class,
  * that has to be written by implementors to setup the JSR 363 TCK for running
  * with their implementations.
  * <p>
  * 
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.6.1, September 25, 2015
+ * @version 0.6.2, October 30, 2015
  */
 public final class TestConfiguration implements ServiceConfiguration {
 
