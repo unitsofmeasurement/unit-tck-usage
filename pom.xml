@@ -13,7 +13,7 @@
 	<packaging>jar</packaging>
 	<groupId>tec.units</groupId>
 	<version>0.4</version>
-	<name>JSR 363 - TCK Usage Example</name>
+	<name>JSR 363 - TCK Usage Demo</name>
 	<description>JSR 363 provides an API for representing, transporting, and performing comprehensive calculations with
         Units of Measurement.
         This module executes the JSR 363 TCK and tests the current JSR 363 Reference Implementation impl. based on Java 8.
