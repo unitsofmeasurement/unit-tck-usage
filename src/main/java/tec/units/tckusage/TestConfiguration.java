@@ -1,6 +1,6 @@
 /*
  *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -50,7 +50,7 @@ import tec.units.tck.util.ServiceConfiguration;
  * <p>
  * 
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.6.3, December 28, 2015
+ * @version 0.6.4, January 1, 2016
  */
 public final class TestConfiguration implements ServiceConfiguration {
 
@@ -92,9 +92,11 @@ public final class TestConfiguration implements ServiceConfiguration {
 
 	@SuppressWarnings("rawtypes")
 	public Collection<Class> getSupportedQuantityTypes() {
-		return Arrays.asList(new Class[] { Acceleration.class,
-				AmountOfSubstance.class, Angle.class, Area.class, Length.class,
-				Mass.class });
+		return Arrays.asList(new Class[] { Acceleration.class, AmountOfSubstance.class, 
+				Angle.class, Area.class, CatalyticActivity.class, Dimensionless.class, 
+        		ElectricCapacitance.class, ElectricCharge.class, ElectricConductance.class, 
+        		ElectricCurrent.class, ElectricResistance.class,
+        		Length.class, Mass.class });
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
