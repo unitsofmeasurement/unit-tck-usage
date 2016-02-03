@@ -29,12 +29,14 @@ import static tec.units.ri.quantity.QuantityDimension.*;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Set;
 
 import javax.measure.Dimension;
+import javax.measure.Quantity;
 import javax.measure.Unit;
 import javax.measure.UnitConverter;
 import javax.measure.format.UnitFormat;
-import javax.measure.quantity.*;
+import org.reflections.Reflections;
 
 import tec.units.ri.format.SimpleUnitFormat;
 import tec.units.ri.function.*;
@@ -50,7 +52,7 @@ import tec.units.tck.util.ServiceConfiguration;
  * <p>
  * 
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.6.4, January 1, 2016
+ * @version 0.6.5, February 3, 2016
  */
 public final class TestConfiguration implements ServiceConfiguration {
 
@@ -91,12 +93,11 @@ public final class TestConfiguration implements ServiceConfiguration {
 	}
 
 	@SuppressWarnings("rawtypes")
-	public Collection<Class> getSupportedQuantityTypes() {
-		return Arrays.asList(new Class[] { Acceleration.class, AmountOfSubstance.class, 
-				Angle.class, Area.class, CatalyticActivity.class, Dimensionless.class, 
-        		ElectricCapacitance.class, ElectricCharge.class, ElectricConductance.class, 
-        		ElectricCurrent.class, ElectricResistance.class,
-        		Length.class, Mass.class });
+	public Collection<Class<? extends Quantity>> getSupportedQuantityTypes() {
+		Reflections reflections = new Reflections("javax.measure");
+		Set<Class<? extends Quantity>> subTypes = reflections
+				.getSubTypesOf(Quantity.class);
+		return subTypes;
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })

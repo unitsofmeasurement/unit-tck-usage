@@ -2,8 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<parent> <!-- TODO use uom-demos as parent, as soon as it's on MavenCentral, 
-			too -->
+	<parent> <!-- TODO use uom-demos as parent, as soon as it's on MavenCentral, too -->
 		<groupId>tec.uom</groupId>
 		<artifactId>uom-parent</artifactId>
 		<version>0.9-SNAPSHOT</version>
@@ -48,6 +47,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<testng.version>6.9.10</testng.version>
+		<reflections.version>0.9.10</reflections.version>
 	</properties>
 
 	<ciManagement>
@@ -67,36 +67,36 @@
 		<url>https://github.com/unitsofmeasurement/unit-tck-usage</url>
 	</scm>
 
-    <!-- Additional repositories -->
-    <!-- Helps to resolve Parent POM and Snapshot artifacts -->
-    <repositories>
-        <repository>
-            <id>geotoolkit</id>
-            <name>Geotoolkit.org project</name>
-            <url>http://maven.geotoolkit.org</url>
-        </repository>
-        <repository>
-            <id>jcenter</id>
-            <name>JCenter</name>
-            <url>http://jcenter.bintray.com</url>
-        </repository>
-        <repository>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <id>bintray-release</id>
-            <name>libs-release</name>
-            <url>http://oss.jfrog.org/artifactory/libs-release</url>
-        </repository>
-        <repository>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-            <id>bintray-snapshot</id>
-            <name>libs-snapshot</name>
-            <url>http://oss.jfrog.org/artifactory/libs-snapshot</url>
-        </repository>
-    </repositories>
+	<!-- Additional repositories -->
+	<!-- Helps to resolve Parent POM and Snapshot artifacts -->
+	<repositories>
+		<repository>
+			<id>geotoolkit</id>
+			<name>Geotoolkit.org project</name>
+			<url>http://maven.geotoolkit.org</url>
+		</repository>
+		<repository>
+			<id>jcenter</id>
+			<name>JCenter</name>
+			<url>http://jcenter.bintray.com</url>
+		</repository>
+		<repository>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<id>bintray-release</id>
+			<name>libs-release</name>
+			<url>http://oss.jfrog.org/artifactory/libs-release</url>
+		</repository>
+		<repository>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<id>bintray-snapshot</id>
+			<name>libs-snapshot</name>
+			<url>http://oss.jfrog.org/artifactory/libs-snapshot</url>
+		</repository>
+	</repositories>
 
 	<dependencies>
 		<dependency>
@@ -104,7 +104,8 @@
 			<artifactId>unit-tck</artifactId>
 			<version>${tck.version}</version>
 			<exclusions>
-				<exclusion>  <!-- We exclude the RI to avoid possible interference with the implementation under test -->
+				<exclusion>  <!-- We exclude the RI to avoid possible interference with the implementation 
+						under test -->
 					<groupId>tec.units</groupId>
 					<artifactId>unit-ri</artifactId>
 				</exclusion>
@@ -122,6 +123,12 @@
 			<artifactId>${api.artifactId}</artifactId>
 			<type>jar</type>
 			<version>${api.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.reflections</groupId>
+			<artifactId>reflections</artifactId>
+			<version>${reflections.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.testng</groupId>
