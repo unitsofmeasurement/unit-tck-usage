@@ -1,6 +1,6 @@
 /*
  *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -25,15 +25,23 @@
  */
 package tec.units.tckusage;
 
+import static tec.uom.impl.enums.quantity.SimpleDimension.*;
+
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.measure.Dimension;
+import javax.measure.Quantity;
 import javax.measure.Unit;
 import javax.measure.UnitConverter;
+import javax.measure.format.UnitFormat;
 
+import org.reflections.Reflections;
+
+import tec.uom.impl.enums.format.SimpleUnitFormat;
 import tec.uom.impl.enums.function.*;
 import tec.uom.impl.enums.quantity.*;
 import tec.uom.impl.enums.unit.*;
@@ -44,29 +52,60 @@ import tec.units.tck.util.ServiceConfiguration;
  * that has to be written by implementors to setup the JSR 363 TCK for running
  * with their implementations.
  * <p>
- * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
+ * 
+ * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  */
-public final class TCKTestSetup implements ServiceConfiguration {
+public final class TestConfiguration implements ServiceConfiguration {
 
-	public Collection<Class> getQuantityClasses() {
-		return Arrays.asList(new Class[] { TemperatureAmount.class, TimeAmount.class });
-	}
-
-	public Collection<Class> getUnitClasses() {
-		return Arrays.asList(new Class[] { BitRateUnit.class, BitUnit.class,
-				DimensionlessUnit.class, DistanceUnit.class, TemperatureUnit.class, TimeUnit.class });
-	}
-
-    public Collection<? extends Unit<?>> getUnits4Test(){
-    	final Set<Unit<?>> units = new HashSet<Unit<?>>();
-    	units.add(DistanceUnit.METRE);
-    	units.add(TemperatureUnit.KELVIN);
-    	units.add(TimeUnit.SECOND);
-    	return Collections.unmodifiableSet(units);
+    public Collection<Class> getQuantityClasses() {
+	return Arrays.asList(new Class[] { TemperatureAmount.class,
+		TimeAmount.class });
     }
-	
-	public Collection<UnitConverter> getUnitConverters4Test() {
-		return Arrays.asList(new UnitConverter[] { AbstractConverter.IDENTITY });
-	}
+
+    public Collection<Class> getUnitClasses() {
+	return Arrays.asList(new Class[] { DimensionlessUnit.class,
+		DistanceUnit.class, TemperatureUnit.class, TimeUnit.class });
+    }
+
+    public Collection<? extends Unit<?>> getUnits4Test() {
+	final Set<Unit<?>> units = new HashSet<Unit<?>>();
+	units.add(DistanceUnit.METRE);
+	units.add(TemperatureUnit.KELVIN);
+	units.add(TimeUnit.SECOND);
+	return Collections.unmodifiableSet(units);
+    }
+
+    public Collection<UnitConverter> getUnitConverters4Test() {
+	return Arrays
+		.asList(new UnitConverter[] { AbstractConverter.IDENTITY });
+    }
+
+    public Collection<UnitFormat> getUnitFormats4Test() {
+	return Arrays
+		.asList(new UnitFormat[] { SimpleUnitFormat.getInstance() });
+    }
+
+    public Collection<Dimension> getBaseDimensions() {
+	return Arrays.asList(new Dimension[] { INSTANCE });
+    }
+
+    @SuppressWarnings("rawtypes")
+    public Collection<Class> getDimensionClasses() {
+	return Arrays.asList(new Class[] { SimpleDimension.class });
+    }
+
+    @SuppressWarnings("rawtypes")
+    public Collection<Class<? extends Quantity>> getSupportedQuantityTypes() {
+	Reflections reflections = new Reflections("javax.measure");
+	Set<Class<? extends Quantity>> subTypes = reflections
+		.getSubTypesOf(Quantity.class);
+	return subTypes;
+    }
+
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    public Unit getUnit4Type(Class quantityType) {
+	// return Units.getInstance().getUnit(quantityType);
+	return null;
+    }
 
 }

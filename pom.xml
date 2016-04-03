@@ -2,17 +2,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<parent> <!-- TODO use uom-demos as parent, as soon as it's on MavenCentral, 
-			too -->
+	<parent> <!-- TODO use uom-demos as parent, as soon as it's on MavenCentral, too -->
 		<groupId>tec.uom</groupId>
 		<artifactId>uom-parent</artifactId>
-		<version>0.8-RC3</version>
+		<version>0.9-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>unit-tck-usage</artifactId>
 	<packaging>jar</packaging>
 	<groupId>tec.units</groupId>
-	<version>0.4-SNAPSHOT</version>
+	<version>0.8-SNAPSHOT</version>
 	<name>JSR 363 - TCK Usage Example</name>
 	<description>JSR 363 provides an API for representing, transporting, and performing comprehensive calculations with
         Units of Measurement.
@@ -32,21 +31,22 @@
 		<!-- 1) Your implementation artifact to be tested. -->
 		<impl.groupId>tec.uom.impl</impl.groupId>
 		<impl.artifactId>uom-impl-enum</impl.artifactId>
-		<impl.version>0.8-SNAPSHOT</impl.version>
+		<impl.version>0.9-SNAPSHOT</impl.version>
 		<impl.packageType>jar</impl.packageType>
 
 		<!-- 2) JSR API version to be used. -->
-		<api.version>0.8-SNAPSHOT</api.version>
+		<api.version>0.9-SNAPSHOT</api.version>
 		<api.artifactId>unit-api</api.artifactId>
 
 		<!-- ************ Other settings, Should normally not be changed. ************ -->
-		<tck.version>0.4</tck.version>
+		<tck.version>0.9-SNAPSHOT</tck.version>
 		<jdkVersion>1.7</jdkVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<testng.version>6.8.5</testng.version>
+		<testng.version>6.9.10</testng.version>
+		<reflections.version>0.9.10</reflections.version>
 	</properties>
 
 	<ciManagement>
@@ -54,10 +54,10 @@
 		<url>https://circleci.com/gh/unitsofmeasurement/unit-tck-usage</url>
 	</ciManagement>
 
-    <issueManagement>
-        <system>GitHub</system>
-        <url>https://github.com/unitsofmeasurement/unit-tck-usage</url>
-    </issueManagement>
+	<issueManagement>
+		<system>GitHub</system>
+		<url>https://github.com/unitsofmeasurement/unit-tck-usage</url>
+	</issueManagement>
 
 	<scm>
 		<connection>scm:git:https://github.com/unitsofmeasurement/unit-tck-usage.git</connection>
@@ -103,7 +103,8 @@
 			<artifactId>unit-tck</artifactId>
 			<version>${tck.version}</version>
 			<exclusions>
-				<exclusion>  <!-- We exclude the RI to avoid possible interference with the implementation under test -->
+				<exclusion>  <!-- We exclude the RI to avoid possible interference with the implementation 
+						under test -->
 					<groupId>tec.units</groupId>
 					<artifactId>unit-ri</artifactId>
 				</exclusion>
@@ -121,6 +122,12 @@
 			<artifactId>${api.artifactId}</artifactId>
 			<type>jar</type>
 			<version>${api.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.reflections</groupId>
+			<artifactId>reflections</artifactId>
+			<version>${reflections.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.testng</groupId>
