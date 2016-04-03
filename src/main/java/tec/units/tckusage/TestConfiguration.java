@@ -1,6 +1,6 @@
 /*
- *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Unit-API - Units of Measurement TCK for Java
+ *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -25,70 +25,83 @@
  */
 package tec.units.tckusage;
 
-import static tec.uom.se.quantity.QuantityDimension.AMOUNT_OF_SUBSTANCE;
-import static tec.uom.se.quantity.QuantityDimension.ELECTRIC_CURRENT;
-import static tec.uom.se.quantity.QuantityDimension.LENGTH;
-import static tec.uom.se.quantity.QuantityDimension.LUMINOUS_INTENSITY;
-import static tec.uom.se.quantity.QuantityDimension.MASS;
-import static tec.uom.se.quantity.QuantityDimension.TEMPERATURE;
-import static tec.uom.se.quantity.QuantityDimension.TIME;
+import static tec.uom.se.quantity.QuantityDimension.*;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Set;
+
 import javax.measure.Dimension;
+import javax.measure.Quantity;
 import javax.measure.Unit;
 import javax.measure.UnitConverter;
-import javax.measure.spi.Bootstrap;
-import javax.measure.spi.SystemOfUnits;
-import javax.measure.spi.SystemOfUnitsService;
+import javax.measure.format.UnitFormat;
+import org.reflections.Reflections;
 
+import tec.uom.se.format.SimpleUnitFormat;
 import tec.uom.se.function.*;
-import tec.uom.se.quantity.*;
+import tec.uom.se.quantity.NumberQuantity;
+import tec.uom.se.quantity.QuantityDimension;
 import tec.uom.se.unit.*;
 import tec.units.tck.util.ServiceConfiguration;
 
 /**
- * ServiceLoaderConfiguration setup class. This is an example TCK setup class,
+ * ServiceConfiguration setup class. This is an example TCK setup class,
  * that has to be written by implementors to setup the JSR 363 TCK for running
  * with their implementations.
  * <p>
- * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
+ * 
+ * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
+ * @version 0.7, April 3, 2016
  */
-public final class TCKTestSetup implements ServiceConfiguration {
+public final class TestConfiguration implements ServiceConfiguration {
 
-	@Override
+	@SuppressWarnings("rawtypes")
 	public Collection<Class> getQuantityClasses() {
 		return Arrays.asList(new Class[] { NumberQuantity.class });
 	}
 
-	@Override
+	@SuppressWarnings("rawtypes")
 	public Collection<Class> getUnitClasses() {
-		return Arrays.asList(new Class[] { BaseUnit.class, AlternateUnit.class, AnnotatedUnit.class,
+		return Arrays.asList(new Class[] { BaseUnit.class, AlternateUnit.class,
 				ProductUnit.class, TransformedUnit.class });
 	}
-	
-    @Override
-    public Collection<? extends Unit<?>> getUnits4Test(){
-//    	Unit<Length> m = Units.METRE;
-//    	final Set<? extends Unit<?>> units = Units.getInstance().getUnits();
-//    	return units;
-    	SystemOfUnitsService service = Bootstrap
-				.getService(SystemOfUnitsService.class);
-    	SystemOfUnits sou = service.getSystemOfUnits();
-    	return sou.getUnits();
-    }
 
-	@Override
-	public Collection<Dimension> getBaseDimensions() {
-		return Arrays
-                .asList(new Dimension[] { AMOUNT_OF_SUBSTANCE, ELECTRIC_CURRENT, LENGTH, LUMINOUS_INTENSITY, 
-                		MASS, TEMPERATURE, TIME });
+	public Collection<? extends Unit<?>> getUnits4Test() {
+		return Units.getInstance().getUnits();
 	}
 
-	@Override
 	public Collection<UnitConverter> getUnitConverters4Test() {
-		return Arrays.asList(new UnitConverter[] { new AddConverter(1), new ExpConverter(1), new LogConverter(1),
-				new MultiplyConverter(1), RationalConverter.of(1, 1), });
+		return Arrays.asList(new UnitConverter[] { new AddConverter(1),
+				new ExpConverter(1), new LogConverter(1),
+				new MultiplyConverter(0), RationalConverter.of(1, 1), });
 	}
 
+	public Collection<UnitFormat> getUnitFormats4Test() {
+		return Arrays.asList(new UnitFormat[] { SimpleUnitFormat.getInstance() });
+	}
+
+	@SuppressWarnings("rawtypes")
+	public Collection<Class> getDimensionClasses() {
+		return Arrays.asList(new Class[] { QuantityDimension.class });
+	}
+
+	public Collection<Dimension> getBaseDimensions() {
+		return Arrays.asList(new Dimension[] { AMOUNT_OF_SUBSTANCE,
+				ELECTRIC_CURRENT, LENGTH, LUMINOUS_INTENSITY, MASS,
+				TEMPERATURE, TIME });
+	}
+
+	@SuppressWarnings("rawtypes")
+	public Collection<Class<? extends Quantity>> getSupportedQuantityTypes() {
+		Reflections reflections = new Reflections("javax.measure");
+		Set<Class<? extends Quantity>> subTypes = reflections
+				.getSubTypesOf(Quantity.class);
+		return subTypes;
+	}
+
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public Unit getUnit4Type(Class quantityType) {
+		return Units.getInstance().getUnit(quantityType);
+	}
 }
