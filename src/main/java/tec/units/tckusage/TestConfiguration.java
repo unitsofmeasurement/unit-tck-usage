@@ -52,7 +52,7 @@ import tec.units.tck.util.ServiceConfiguration;
  * <p>
  * 
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.6.5, February 3, 2016
+ * @version 0.7, April 3, 2016
  */
 public final class TestConfiguration implements ServiceConfiguration {
 
@@ -74,7 +74,7 @@ public final class TestConfiguration implements ServiceConfiguration {
 	public Collection<UnitConverter> getUnitConverters4Test() {
 		return Arrays.asList(new UnitConverter[] { new AddConverter(1),
 				new ExpConverter(1), new LogConverter(1),
-				new MultiplyConverter(0), RationalConverter.of(1, 1), });
+				new MultiplyConverter(0), RationalConverter.of(2, 1), });
 	}
 
 	public Collection<UnitFormat> getUnitFormats4Test() {
