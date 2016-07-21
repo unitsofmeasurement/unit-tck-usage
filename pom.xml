@@ -5,13 +5,12 @@
 	<parent> <!-- TODO use uom-demos as parent, as soon as it's on MavenCentral, too -->
 		<groupId>tec.uom</groupId>
 		<artifactId>uom-parent</artifactId>
-		<version>0.9-SNAPSHOT</version>
+		<version>0.9</version>
 	</parent>
 
 	<artifactId>unit-tck-usage</artifactId>
 	<packaging>jar</packaging>
 	<groupId>tec.units</groupId>
-	<version>0.8-SNAPSHOT</version>
 	<name>JSR 363 - TCK Usage Example</name>
 	<description>JSR 363 provides an API for representing, transporting, and performing comprehensive calculations with
         Units of Measurement.
@@ -35,11 +34,11 @@
 		<impl.packageType>jar</impl.packageType>
 
 		<!-- 2) JSR API version to be used. -->
-		<api.version>0.9-SNAPSHOT</api.version>
+		<api.version>0.9</api.version>
 		<api.artifactId>unit-api</api.artifactId>
 
 		<!-- ************ Other settings, Should normally not be changed. ************ -->
-		<tck.version>0.9-SNAPSHOT</tck.version>
+		<tck.version>0.9</tck.version>
 		<jdkVersion>1.7</jdkVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
@@ -70,11 +69,6 @@
 	<!-- Helps to resolve Parent POM and Snapshot artifacts -->
 	<repositories>
 		<repository>
-			<id>geotoolkit</id>
-			<name>Geotoolkit.org project</name>
-			<url>http://maven.geotoolkit.org</url>
-		</repository>
-		<repository>
 			<id>jcenter</id>
 			<name>JCenter</name>
 			<url>http://jcenter.bintray.com</url>
@@ -95,6 +89,11 @@
 			<name>libs-snapshot</name>
 			<url>http://oss.jfrog.org/artifactory/libs-snapshot</url>
 		</repository>
+		<repository>
+            <id>geotoolkit</id>
+            <name>Geotoolkit.org project</name>
+            <url>http://maven.geotoolkit.org</url>
+        </repository>
 	</repositories>
 
 	<dependencies>
