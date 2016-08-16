@@ -2,10 +2,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<parent> <!-- TODO use uom-demos as parent, as soon as it's on MavenCentral, too -->
+	<parent>
 		<groupId>tec.uom</groupId>
 		<artifactId>uom-parent</artifactId>
-		<version>1.0-SNAPSHOT</version>
+		<version>1.0</version>
 	</parent>
 
 	<artifactId>unit-tck-usage</artifactId>
@@ -31,15 +31,15 @@
 		<!-- 1) Your implementation artifact to be tested. -->
 		<impl.groupId>tec.units</impl.groupId>
 		<impl.artifactId>unit-ri</impl.artifactId>
-		<impl.version>1.0-SNAPSHOT</impl.version>
+		<impl.version>1.0</impl.version>
 		<impl.packageType>jar</impl.packageType>
 
 		<!-- 2) JSR API version to be used. -->
-		<api.version>1.0-SNAPSHOT</api.version>
+		<api.version>1.0</api.version>
 		<api.artifactId>unit-api</api.artifactId>
 
 		<!-- ************ Other settings, Should normally not be changed. ************ -->
-		<tck.version>1.0-SNAPSHOT</tck.version>
+		<tck.version>1.0</tck.version>
 		<jdkVersion>1.7</jdkVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
