@@ -1,6 +1,6 @@
 /*
  *  Unit-API - Units of Measurement TCK for Java
- *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Copyright (c) 2005-2017, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *

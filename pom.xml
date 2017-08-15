@@ -5,17 +5,17 @@
 	<parent> <!-- TODO use uom-demos as parent, as soon as it's on MavenCentral, too -->
 		<groupId>tec.uom</groupId>
 		<artifactId>uom-parent</artifactId>
-		<version>0.9</version>
+		<version>1.0.4</version>
 	</parent>
 
 	<artifactId>unit-tck-usage</artifactId>
 	<packaging>jar</packaging>
 	<groupId>tec.units</groupId>
-	<version>0.9</version>
+	<version>1.0.1-SNAPSHOT</version>
 	<name>JSR 363 - TCK Usage Example</name>
 	<description>JSR 363 provides an API for representing, transporting, and performing comprehensive calculations with
         Units of Measurement.
-        This module executes the JSR 363 TCK and tests the Lightweight JSR 363 Implementation based on Java enums.</description>
+        This module executes the JSR 363 TCK and tests the Java SE Implementation based on Java 8.</description>
 
 	<licenses>
 		<license>
@@ -31,15 +31,15 @@
 		<!-- 1) Your implementation artifact to be tested. -->
 		<impl.groupId>tec.uom</impl.groupId>
 		<impl.artifactId>uom-se</impl.artifactId>
-		<impl.version>0.9</impl.version>
+		<impl.version>1.0.8</impl.version>
 		<impl.packageType>jar</impl.packageType>
 
 		<!-- 2) JSR API version to be used. -->
-		<api.version>0.9</api.version>
+		<api.version>1.0</api.version>
 		<api.artifactId>unit-api</api.artifactId>
 
 		<!-- ************ Other settings, Should normally not be changed. ************ -->
-		<tck.version>0.9</tck.version>
+		<tck.version>1.0</tck.version>
 		<jdkVersion>1.8</jdkVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
