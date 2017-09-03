@@ -5,10 +5,11 @@
 	<parent> <!-- XXX could use uom-demos as parent later, as soon as it's on MavenCentral, too -->
 		<groupId>tec.uom</groupId>
 		<artifactId>uom-parent</artifactId>
-		<version>1.0</version>
+		<version>1.0.4</version>
 	</parent>
 
 	<artifactId>unit-tck-usage</artifactId>
+	<version>1.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<groupId>tec.units</groupId>
 	<name>JSR 363 - TCK Usage Example</name>
@@ -38,7 +39,7 @@
 		<api.artifactId>unit-api</api.artifactId>
 
 		<!-- ************ Other settings, Should normally not be changed. ************ -->
-		<tck.version>1.0</tck.version>
+		<tck.version>1.0.1-SNAPSHOT</tck.version>
 		<jdkVersion>1.7</jdkVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
