@@ -3,7 +3,7 @@ JSR 363 - TCK Usage Demo Project illustrating how an implementation of the JSR 3
 
 This branch tests [Eclipse UOMo](https://www.eclipse.org/uomo/) running **Java SE 7**.
 
-**Note:** While Eclipse UOMo is still incubating, the modules are only available on a P2 repository/Update site. 
+**Note:** Until the respective Eclipse UOMo version (**0.7**) is released, the modules are only available on a snapshot P2 repository/Update site. 
 You have to check out and build the right branch (currently **0.7**) of UOMo locally with `mvn clean install` before running the TCK harness.
 
 [![Circle CI](https://circleci.com/gh/unitsofmeasurement/unit-tck-usage.svg?style=svg)](https://circleci.com/gh/unitsofmeasurement/unit-tck-usage)
