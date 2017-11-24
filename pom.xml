@@ -30,9 +30,9 @@
 		<!-- ************ TCK Setup ****************** -->
 
 		<!-- 1) Your implementation artifact to be tested. -->
-		<impl.groupId>tec.units</impl.groupId>
-		<impl.artifactId>unit-ri</impl.artifactId>
-		<impl.version>1.0.3</impl.version>
+		<impl.groupId>org.eclipse.uomo</impl.groupId>
+		<impl.artifactId>org.eclipse.uomo.units</impl.artifactId>
+		<impl.version>0.7.0-SNAPSHOT</impl.version>
 		<impl.packageType>jar</impl.packageType>
 
 		<!-- 2) JSR API version to be used. -->

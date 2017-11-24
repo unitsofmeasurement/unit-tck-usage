@@ -1,6 +1,6 @@
 /*
- *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Units of Measurement TCK Usage Demo
+ *  Copyright (c) 2005-2017, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -25,7 +25,7 @@
  */
 package tec.units.tckusage;
 
-import static tec.units.ri.quantity.QuantityDimension.*;
+import static org.eclipse.uomo.units.impl.QuantityDimension.*;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -38,11 +38,10 @@ import javax.measure.UnitConverter;
 import javax.measure.format.UnitFormat;
 import org.reflections.Reflections;
 
-import tec.units.ri.format.SimpleUnitFormat;
-import tec.units.ri.function.*;
-import tec.units.ri.quantity.NumberQuantity;
-import tec.units.ri.quantity.QuantityDimension;
-import tec.units.ri.unit.*;
+import org.eclipse.uomo.units.impl.*;
+import org.eclipse.uomo.units.impl.converter.*;
+import org.eclipse.uomo.units.impl.format.SimpleUnitFormat;
+import org.eclipse.uomo.units.impl.system.Units;
 import tec.units.tck.util.ServiceConfiguration;
 
 /**
@@ -52,7 +51,7 @@ import tec.units.tck.util.ServiceConfiguration;
  * <p>
  * 
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.7, April 3, 2016
+ * @version 0.7.1, November 24, 2017
  */
 public final class TestConfiguration implements ServiceConfiguration {
 
@@ -74,7 +73,7 @@ public final class TestConfiguration implements ServiceConfiguration {
 	public Collection<UnitConverter> getUnitConverters4Test() {
 		return Arrays.asList(new UnitConverter[] { new AddConverter(1),
 				new ExpConverter(1), new LogConverter(1),
-				new MultiplyConverter(0), RationalConverter.of(2, 1), });
+				new MultiplyConverter(0), RationalConverter.of(2, 1) });
 	}
 
 	public Collection<UnitFormat> getUnitFormats4Test() {
