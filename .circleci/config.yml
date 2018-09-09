@@ -24,10 +24,10 @@ jobs:
       - checkout
         
       # run tests!
-      - run: mvn --batch-mode test jacoco:report
+      - run: mvn test -Dtec.units.tck.reportFile=$CIRCLE_TEST_REPORTS/tck-results.txt
       
       - store_artifacts:
-         path: /target
+         path: ~/target
          
   deployment:
     docker:
