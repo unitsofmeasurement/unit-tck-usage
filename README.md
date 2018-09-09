@@ -1,5 +1,5 @@
 # unit-tck-usage
-JSR 363 - TCK Usage Demo Project illustrating how an implementation of the JSR 363 API can be tested using the JSR 363 TCK.
+JSR 385 - TCK Usage Demo Project illustrating how an implementation of the JSR 385 API can be tested using the JSR 385 TCK.
 
 [![Circle CI](https://circleci.com/gh/unitsofmeasurement/unit-tck-usage.svg?style=svg)](https://circleci.com/gh/unitsofmeasurement/unit-tck-usage)
 [![Stability: Active](https://masterminds.github.io/stability/active.svg)](https://masterminds.github.io/stability/active.html)
