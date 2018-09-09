@@ -1,5 +1,0 @@
-test:
-   override:
-     - mvn test -Dtec.units.tck.profile=format -Dtec.units.tck.reportFile=$CIRCLE_TEST_REPORTS/tck-results.txt
-#   post:
-#     - cp $CIRCLE_TEST_REPORTS/*.* $CIRCLE_ARTIFACTS
