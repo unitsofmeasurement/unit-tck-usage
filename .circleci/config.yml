@@ -19,13 +19,14 @@ jobs:
     environment:
       # Customize the JVM maximum heap limit
       MAVEN_OPTS: -Xmx3200m
+      PROFILE: format
       TEST_REPORTS: /tmp/test-reports
       
     steps:
       - checkout
         
       # run tests!
-      - run: mvn test
+      - run: mvn test -Dtec.units.tck.profile=$PROFILE
       
       # copy TXT result to HTML report folder
       - run:
