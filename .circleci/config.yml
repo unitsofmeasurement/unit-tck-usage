@@ -25,7 +25,7 @@ jobs:
       - checkout
         
       # run tests!
-      - run: mvn test -Dtec.units.tck.reportFile=${TEST_REPORTS}/tck-results.txt
+      - run: mvn test -Dtec.units.tck.reportFile=$TEST_REPORTS/tck-results.txt
       
       - store_artifacts:
          path: ~/target
