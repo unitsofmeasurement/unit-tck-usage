@@ -19,12 +19,13 @@ jobs:
     environment:
       # Customize the JVM maximum heap limit
       MAVEN_OPTS: -Xmx3200m
-    
+      TEST_REPORTS: /tmp/test-reports
+      
     steps:
       - checkout
         
       # run tests!
-      - run: mvn test -Dtec.units.tck.reportFile=$CIRCLE_TEST_REPORTS/tck-results.txt
+      - run: mvn test -Dtec.units.tck.reportFile=${TEST_REPORTS}/tck-results.txt
       
       - store_artifacts:
          path: ~/target
