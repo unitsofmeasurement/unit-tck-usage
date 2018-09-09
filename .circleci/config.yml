@@ -27,8 +27,8 @@ jobs:
       # run tests!
       - run: mvn test
       
-      - store_artifacts:
-         path: ~/repo/./target/*.txt
+      - run:
+         cp ~/repo/./target/*.txt ~/repo/./target/tck-output
          
       - store_artifacts:
          path: ~/repo/./target/tck-output
