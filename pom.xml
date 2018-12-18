@@ -33,15 +33,15 @@
 		<!-- 1) Your implementation artifact to be tested. -->
 		<impl.groupId>tech.units</impl.groupId>
 		<impl.artifactId>indriya</impl.artifactId>
-		<impl.version>2.0-EDR</impl.version>
+		<impl.version>2.0-SNAPSHOT</impl.version>
 		<impl.packageType>jar</impl.packageType>
 
 		<!-- 2) JSR API version to be used. -->
-		<api.version>2.0-EDR</api.version>
+		<api.version>2.0-SNAPSHOT</api.version>
 		<api.artifactId>unit-api</api.artifactId>
 
 		<!-- ************ Other settings, Should normally not be changed. ************ -->
-		<tck.version>2.0-EDR</tck.version>
+		<tck.version>2.0-SNAPSHOT</tck.version>
 		<jdkVersion>1.8</jdkVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
