@@ -41,9 +41,11 @@ import javax.measure.MetricPrefix;
 import javax.measure.Quantity;
 import javax.measure.Unit;
 import javax.measure.UnitConverter;
+import javax.measure.format.QuantityFormat;
 import javax.measure.format.UnitFormat;
 import org.reflections.Reflections;
 
+import tech.units.indriya.format.SimpleQuantityFormat;
 import tech.units.indriya.format.SimpleUnitFormat;
 import tech.units.indriya.function.*;
 import tech.units.indriya.quantity.NumberQuantity;
@@ -58,7 +60,7 @@ import tech.units.tck.util.ServiceConfiguration;
  * <p>
  * 
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.0, Sepbember 9, 2018
+ * @version 1.1, February 21, 2019
  */
 public final class TestConfiguration implements ServiceConfiguration {
 
@@ -115,5 +117,10 @@ public final class TestConfiguration implements ServiceConfiguration {
     @Override
     public Collection<Class> getPrefixClasses() {
         return Arrays.asList(new Class[] { BinaryPrefix.class, MetricPrefix.class });
+    }
+
+    @Override
+    public Collection<QuantityFormat> getQuantityFormats4Test() {
+        return Arrays.asList(new QuantityFormat[] { SimpleQuantityFormat.getInstance() });
     }
 }
