@@ -33,22 +33,22 @@
 		<!-- 1) Your implementation artifact to be tested. -->
 		<impl.groupId>tech.units</impl.groupId>
 		<impl.artifactId>indriya</impl.artifactId>
-		<impl.version>2.0-SNAPSHOT</impl.version>
+		<impl.version>2.0-PRD</impl.version>
 		<impl.packageType>jar</impl.packageType>
 
 		<!-- 2) JSR API version to be used. -->
-		<api.version>2.0-SNAPSHOT</api.version>
+		<api.version>2.0-PRD</api.version>
 		<api.artifactId>unit-api</api.artifactId>
 
 		<!-- ************ Other settings, Should normally not be changed. ************ -->
-		<tck.version>2.0-SNAPSHOT</tck.version>
+		<tck.version>2.0-PRD</tck.version>
 		<jdkVersion>1.8</jdkVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<testng.version>6.13.1</testng.version>
-		<reflections.version>0.9.10</reflections.version>
+		<testng.version>6.14.3</testng.version>
+		<reflections.version>0.9.11</reflections.version>
 	</properties>
 
 	<ciManagement>
