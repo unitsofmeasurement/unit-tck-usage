@@ -1,6 +1,6 @@
 /*
  * Units of Measurement TCK
- * Copyright (c) 2014-2018, Jean-Marie Dautelle, Werner Keil, Otavio Santana.
+ * Copyright (c) 2014-2019, Jean-Marie Dautelle, Werner Keil, Otavio Santana.
  *
  * All rights reserved.
  *
@@ -29,7 +29,7 @@
  */
 package tech.units.tckusage;
 
-import static tech.units.indriya.quantity.QuantityDimension.*;
+import static tech.units.indriya.unit.UnitDimension.*;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -49,7 +49,7 @@ import tech.units.indriya.format.SimpleQuantityFormat;
 import tech.units.indriya.format.SimpleUnitFormat;
 import tech.units.indriya.function.*;
 import tech.units.indriya.quantity.NumberQuantity;
-import tech.units.indriya.quantity.QuantityDimension;
+import tech.units.indriya.unit.UnitDimension;
 import tech.units.indriya.unit.*;
 import tech.units.tck.util.ServiceConfiguration;
 
@@ -59,8 +59,8 @@ import tech.units.tck.util.ServiceConfiguration;
  * with their implementations.
  * <p>
  * 
- * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.1, February 21, 2019
+ * @author <a href="mailto:werner@units.tech">Werner Keil</a>
+ * @version 2.0, July 7, 2019
  */
 public final class TestConfiguration implements ServiceConfiguration {
 
@@ -82,7 +82,8 @@ public final class TestConfiguration implements ServiceConfiguration {
 	public Collection<UnitConverter> getUnitConverters4Test() {
 		return Arrays.asList(new UnitConverter[] { new AddConverter(1),
 				new ExpConverter(1), new LogConverter(1),
-				new MultiplyConverter(0), RationalConverter.of(2, 1), });
+				MultiplyConverter.of(0d), MultiplyConverter.ofRational(2, 1), 
+				MultiplyConverter.ofPiExponent(10), MultiplyConverter.ofTenExponent(2) });
 	}
 
 	public Collection<UnitFormat> getUnitFormats4Test() {
@@ -91,7 +92,7 @@ public final class TestConfiguration implements ServiceConfiguration {
 
 	@SuppressWarnings("rawtypes")
 	public Collection<Class> getDimensionClasses() {
-		return Arrays.asList(new Class[] { QuantityDimension.class });
+		return Arrays.asList(new Class[] { UnitDimension.class });
 	}
 
 	public Collection<Dimension> getBaseDimensions() {
