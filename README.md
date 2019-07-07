@@ -1,5 +1,5 @@
 # unit-tck-usage
-JSR 363 - TCK Usage Demo Project illustrating how an implementation of the JSR 363 API can be tested using the JSR 363 TCK.
+JSR 385 - TCK Usage Demo Project illustrating how an implementation of the JSR 385 API can be tested using the JSR 385 TCK.
 
 This branch tests the [Lightweight Units of Measurement Implementation based on Java Enums](../../../uom-impl-enum)) using the **Minimal** profile.
 

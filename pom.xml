@@ -104,8 +104,8 @@
 			<exclusions>
 				<exclusion>  <!-- We exclude the RI to avoid possible interference with the implementation 
 						under test -->
-					<groupId>tec.units</groupId>
-					<artifactId>unit-ri</artifactId>
+					<groupId>tech.units</groupId>
+					<artifactId>indriya</artifactId>
 				</exclusion>
 			</exclusions>
 		</dependency>
