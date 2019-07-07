@@ -23,9 +23,9 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package tec.units.tckusage;
+package tech.units.tckusage;
 
-import static tec.uom.impl.enums.quantity.SimpleDimension.*;
+import static tech.uom.impl.enums.unit.SimpleDimension.*;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -33,19 +33,23 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.measure.BinaryPrefix;
 import javax.measure.Dimension;
+import javax.measure.MetricPrefix;
 import javax.measure.Quantity;
 import javax.measure.Unit;
 import javax.measure.UnitConverter;
+import javax.measure.format.QuantityFormat;
 import javax.measure.format.UnitFormat;
 
 import org.reflections.Reflections;
 
-import tec.uom.impl.enums.format.SimpleUnitFormat;
-import tec.uom.impl.enums.function.*;
-import tec.uom.impl.enums.quantity.*;
-import tec.uom.impl.enums.unit.*;
-import tec.units.tck.util.ServiceConfiguration;
+import tech.uom.impl.enums.format.SimpleQuantityFormat;
+import tech.uom.impl.enums.format.SimpleUnitFormat;
+import tech.uom.impl.enums.function.*;
+import tech.uom.impl.enums.quantity.*;
+import tech.uom.impl.enums.unit.*;
+import tech.units.tck.util.ServiceConfiguration;
 
 /**
  * ServiceLoaderConfiguration setup class. This is an example TCK setup class,
@@ -58,8 +62,8 @@ import tec.units.tck.util.ServiceConfiguration;
 public final class TestConfiguration implements ServiceConfiguration {
 
     public Collection<Class> getQuantityClasses() {
-	return Arrays.asList(new Class[] { TemperatureAmount.class,
-		TimeAmount.class });
+	return Arrays.asList(new Class[] { TemperatureQuantity.class,
+		TimeQuantity.class });
     }
 
     public Collection<Class> getUnitClasses() {
@@ -95,11 +99,9 @@ public final class TestConfiguration implements ServiceConfiguration {
     }
 
     @SuppressWarnings("rawtypes")
-    public Collection<Class<? extends Quantity>> getSupportedQuantityTypes() {
-	Reflections reflections = new Reflections("javax.measure");
-	Set<Class<? extends Quantity>> subTypes = reflections
-		.getSubTypesOf(Quantity.class);
-	return subTypes;
+    @Override
+    public Collection<Class> getPrefixClasses() {
+        return Arrays.asList(new Class[] { BinaryPrefix.class, MetricPrefix.class });
     }
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
@@ -108,4 +110,16 @@ public final class TestConfiguration implements ServiceConfiguration {
 	return null;
     }
 
+    @Override
+    public Collection<QuantityFormat> getQuantityFormats4Test() {
+        return Arrays.asList(new QuantityFormat[] { SimpleQuantityFormat.getInstance() });
+    }
+
+	@SuppressWarnings("rawtypes")
+	public Collection<Class<? extends Quantity>> getSupportedQuantityTypes() {
+		Reflections reflections = new Reflections("javax.measure");
+		Set<Class<? extends Quantity>> subTypes = reflections
+				.getSubTypesOf(Quantity.class);
+		return subTypes;
+	}
 }

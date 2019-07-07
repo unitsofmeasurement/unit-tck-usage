@@ -3,19 +3,18 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent> <!-- XXX could use uom-demos as parent later, as soon as it's on MavenCentral, too -->
-		<groupId>tec.uom</groupId>
+		<groupId>tech.uom</groupId>
 		<artifactId>uom-parent</artifactId>
-		<version>1.0.4</version>
+		<version>2.0</version>
 	</parent>
 
 	<artifactId>unit-tck-usage</artifactId>
-	<version>1.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<groupId>tec.units</groupId>
-	<name>JSR 363 - TCK Usage Example</name>
-	<description>JSR 363 provides an API for representing, transporting, and performing comprehensive calculations with
+	<name>JSR 385 - TCK Usage Example</name>
+	<description>JSR 385 provides an API for representing, transporting, and performing comprehensive calculations with
         Units of Measurement.
-        This module executes the JSR 363 TCK and tests the Small Footprint Implementation of JSR 363 based on Java enums.</description>
+        This module executes the JSR 385 TCK and tests the Small Footprint Implementation of JSR 363 based on Java enums.</description>
 
 	<licenses>
 		<license>
@@ -29,24 +28,24 @@
 		<!-- ************ TCK Setup ****************** -->
 
 		<!-- 1) Your implementation artifact to be tested. -->
-		<impl.groupId>tec.uom.impl</impl.groupId>
+		<impl.groupId>tech.uom.impl</impl.groupId>
 		<impl.artifactId>uom-impl-enum</impl.artifactId>
-		<impl.version>1.0</impl.version>
+		<impl.version>2.0</impl.version>
 		<impl.packageType>jar</impl.packageType>
 
 		<!-- 2) JSR API version to be used. -->
-		<api.version>1.0</api.version>
+		<api.version>2.0</api.version>
 		<api.artifactId>unit-api</api.artifactId>
 
 		<!-- ************ Other settings, Should normally not be changed. ************ -->
-		<tck.version>1.0.1</tck.version>
+		<tck.version>2.0</tck.version>
 		<jdkVersion>1.8</jdkVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<testng.version>6.9.10</testng.version>
-		<reflections.version>0.9.10</reflections.version>
+		<testng.version>6.9.13</testng.version>
+		<reflections.version>0.9.11</reflections.version>
 	</properties>
 
 	<ciManagement>
@@ -99,7 +98,7 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>tec.units</groupId>
+			<groupId>tech.units</groupId>
 			<artifactId>unit-tck</artifactId>
 			<version>${tck.version}</version>
 			<exclusions>

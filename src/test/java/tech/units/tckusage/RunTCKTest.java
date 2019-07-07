@@ -23,13 +23,13 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package tec.units.tckusage;
+package tech.units.tckusage;
 
 import static org.testng.Assert.assertEquals;
 
 import javax.tools.Tool;
 import org.testng.annotations.Test;
-import tec.units.tck.TCKRunner;
+import tech.units.tck.TCKRunner;
 
 public class RunTCKTest{
 
