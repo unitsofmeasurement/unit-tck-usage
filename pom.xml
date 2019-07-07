@@ -10,7 +10,6 @@
 	</parent>
 
 	<artifactId>unit-tck-usage</artifactId>
-	<version>2.0</version>
 	<packaging>jar</packaging>
 	<groupId>tech.units</groupId>
 	<name>JSR 385 - TCK Usage Demo</name>
