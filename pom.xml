@@ -40,14 +40,14 @@
 		<api.artifactId>unit-api</api.artifactId>
 
 		<!-- ************ Other settings, Should normally not be changed. ************ -->
-		<tck.version>1.0</tck.version>
+		<tck.version>1.0.1</tck.version>
 		<jdkVersion>1.8</jdkVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<testng.version>6.9.10</testng.version>
-		<reflections.version>0.9.10</reflections.version>
+		<reflections.version>0.9.11</reflections.version>
 	</properties>
 
 	<ciManagement>

@@ -23,12 +23,12 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package tec.units.tckusage;
+package tech.uom.seshat;
 
-import static tec.units.ri.quantity.QuantityDimension.*;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Locale;
 import java.util.Set;
 
 import javax.measure.Dimension;
@@ -38,12 +38,8 @@ import javax.measure.UnitConverter;
 import javax.measure.format.UnitFormat;
 import org.reflections.Reflections;
 
-import tec.units.ri.format.SimpleUnitFormat;
-import tec.units.ri.function.*;
-import tec.units.ri.quantity.NumberQuantity;
-import tec.units.ri.quantity.QuantityDimension;
-import tec.units.ri.unit.*;
 import tec.units.tck.util.ServiceConfiguration;
+import tech.uom.seshat.UnitServices;
 
 /**
  * ServiceConfiguration setup class. This is an example TCK setup class,
@@ -52,44 +48,40 @@ import tec.units.tck.util.ServiceConfiguration;
  * <p>
  * 
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.7, April 3, 2016
+ * @version 0.9, July 12, 2019
  */
 public final class TestConfiguration implements ServiceConfiguration {
 
 	@SuppressWarnings("rawtypes")
 	public Collection<Class> getQuantityClasses() {
-		return Arrays.asList(new Class[] { NumberQuantity.class });
+		return Arrays.asList(new Class[] { Quantity.class }); // TODO not sure, if this works
 	}
 
 	@SuppressWarnings("rawtypes")
 	public Collection<Class> getUnitClasses() {
-		return Arrays.asList(new Class[] { BaseUnit.class, AlternateUnit.class,
-				ProductUnit.class, TransformedUnit.class });
+		return Arrays.asList(new Class[] { ConventionalUnit.class, SystemUnit.class });
 	}
 
 	public Collection<? extends Unit<?>> getUnits4Test() {
-		return Units.getInstance().getUnits();
+		return UnitServices.current().getSystemOfUnitsService().getSystemOfUnits().getUnits();
 	}
 
 	public Collection<UnitConverter> getUnitConverters4Test() {
-		return Arrays.asList(new UnitConverter[] { new AddConverter(1),
-				new ExpConverter(1), new LogConverter(1),
-				new MultiplyConverter(0), RationalConverter.of(2, 1), });
+		return Arrays.asList(new UnitConverter[] { LinearConverter.create(2, 1), });
 	}
 
 	public Collection<UnitFormat> getUnitFormats4Test() {
-		return Arrays.asList(new UnitFormat[] { SimpleUnitFormat.getInstance() });
+		return Arrays.asList(new UnitFormat[] { new tech.uom.seshat.UnitFormat(Locale.ENGLISH) });
 	}
 
 	@SuppressWarnings("rawtypes")
 	public Collection<Class> getDimensionClasses() {
-		return Arrays.asList(new Class[] { QuantityDimension.class });
+		return Arrays.asList(new Class[] { UnitDimension.class });
 	}
 
 	public Collection<Dimension> getBaseDimensions() {
-		return Arrays.asList(new Dimension[] { AMOUNT_OF_SUBSTANCE,
-				ELECTRIC_CURRENT, LENGTH, LUMINOUS_INTENSITY, MASS,
-				TEMPERATURE, TIME });
+		return Arrays.asList(new Dimension[] { new UnitDimension('L'),
+				new UnitDimension('M') }); // TODO all
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -102,6 +94,6 @@ public final class TestConfiguration implements ServiceConfiguration {
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public Unit getUnit4Type(Class quantityType) {
-		return Units.getInstance().getUnit(quantityType);
+		return UnitServices.current().getSystemOfUnitsService().getSystemOfUnits().getUnit(quantityType);
 	}
 }
