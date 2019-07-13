@@ -41,7 +41,7 @@
 
 		<!-- ************ Other settings, Should normally not be changed. ************ -->
 		<tck.version>1.0.1</tck.version>
-		<jdkVersion>1.8</jdkVersion>
+		<jdkVersion>9</jdkVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
