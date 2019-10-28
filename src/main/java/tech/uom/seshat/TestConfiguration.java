@@ -25,7 +25,7 @@
  */
 package tech.uom.seshat;
 
-
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Locale;
@@ -39,61 +39,90 @@ import javax.measure.format.UnitFormat;
 import org.reflections.Reflections;
 
 import tec.units.tck.util.ServiceConfiguration;
-import tech.uom.seshat.UnitServices;
+
 
 /**
  * ServiceConfiguration setup class. This is an example TCK setup class,
  * that has to be written by implementors to setup the JSR 363 TCK for running
  * with their implementations.
  * <p>
- * 
+ *
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @version 0.9, July 12, 2019
  */
 public final class TestConfiguration implements ServiceConfiguration {
+    /**
+     * Returns the {@link Quantity} implementations defined by a specific class.
+     * The returned list does not include the proxy classes.
+     */
+    @SuppressWarnings("rawtypes")
+    public Collection<Class> getQuantityClasses() {
+        final ArrayList<Class> classes = new ArrayList<>();
+        for (final Class<?> c : Scalar.class.getDeclaredClasses()) {
+            if (Quantity.class.isAssignableFrom(c)) {
+                classes.add(c);
+            }
+        }
+        return classes;
+    }
 
-	@SuppressWarnings("rawtypes")
-	public Collection<Class> getQuantityClasses() {
-		return Arrays.asList(new Class[] { Quantity.class }); // TODO not sure, if this works
-	}
+    @SuppressWarnings("rawtypes")
+    public Collection<Class> getUnitClasses() {
+        return Arrays.asList(new Class[] { ConventionalUnit.class, SystemUnit.class });
+    }
 
-	@SuppressWarnings("rawtypes")
-	public Collection<Class> getUnitClasses() {
-		return Arrays.asList(new Class[] { ConventionalUnit.class, SystemUnit.class });
-	}
+    public Collection<? extends Unit<?>> getUnits4Test() {
+        return UnitServices.current().getSystemOfUnitsService().getSystemOfUnits().getUnits();
+    }
 
-	public Collection<? extends Unit<?>> getUnits4Test() {
-		return UnitServices.current().getSystemOfUnitsService().getSystemOfUnits().getUnits();
-	}
+    public Collection<UnitConverter> getUnitConverters4Test() {
+        return Arrays.asList(new UnitConverter[] { LinearConverter.create(2, 1) });
+    }
 
-	public Collection<UnitConverter> getUnitConverters4Test() {
-		return Arrays.asList(new UnitConverter[] { LinearConverter.create(2, 1), });
-	}
+    public Collection<UnitFormat> getUnitFormats4Test() {
+        return Arrays.asList(new UnitFormat[] { new tech.uom.seshat.UnitFormat(Locale.ENGLISH) });
+    }
 
-	public Collection<UnitFormat> getUnitFormats4Test() {
-		return Arrays.asList(new UnitFormat[] { new tech.uom.seshat.UnitFormat(Locale.ENGLISH) });
-	}
+    @SuppressWarnings("rawtypes")
+    public Collection<Class> getDimensionClasses() {
+        return Arrays.asList(new Class[] { UnitDimension.class });
+    }
 
-	@SuppressWarnings("rawtypes")
-	public Collection<Class> getDimensionClasses() {
-		return Arrays.asList(new Class[] { UnitDimension.class });
-	}
+    public Collection<Dimension> getBaseDimensions() {
+        final Unit<?>[] bases = {
+            Units.METRE,
+            Units.KILOGRAM,
+            Units.SECOND,
+            Units.AMPERE,
+            Units.KELVIN,
+            Units.MOLE,
+            Units.LUMEN
+        };
+        final Dimension[] dimensions = new Dimension[bases.length];
+        for (int i=0; i<bases.length; i++) {
+            dimensions[i] = bases[i].getDimension();
+        }
+        return Arrays.asList(dimensions);
+    }
 
-	public Collection<Dimension> getBaseDimensions() {
-		return Arrays.asList(new Dimension[] { new UnitDimension('L'),
-				new UnitDimension('M') }); // TODO all
-	}
+    @SuppressWarnings("rawtypes")
+    public Collection<Class<? extends Quantity>> getSupportedQuantityTypes() {
+        Reflections reflections = new Reflections("javax.measure");
+        Set<Class<? extends Quantity>> subTypes = reflections
+                        .getSubTypesOf(Quantity.class);
+        /*
+         * Remove quantities for which Seshat does not define any units.
+         */
+        subTypes.remove(javax.measure.quantity.Acceleration.class);
+        subTypes.remove(javax.measure.quantity.CatalyticActivity.class);
+        subTypes.remove(javax.measure.quantity.RadiationDoseAbsorbed.class);
+        subTypes.remove(javax.measure.quantity.RadiationDoseEffective.class);
+        subTypes.remove(javax.measure.quantity.Radioactivity.class);
+        return subTypes;
+    }
 
-	@SuppressWarnings("rawtypes")
-	public Collection<Class<? extends Quantity>> getSupportedQuantityTypes() {
-		Reflections reflections = new Reflections("javax.measure");
-		Set<Class<? extends Quantity>> subTypes = reflections
-				.getSubTypesOf(Quantity.class);
-		return subTypes;
-	}
-
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public Unit getUnit4Type(Class quantityType) {
-		return UnitServices.current().getSystemOfUnitsService().getSystemOfUnits().getUnit(quantityType);
-	}
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    public Unit getUnit4Type(Class quantityType) {
+        return UnitServices.current().getSystemOfUnitsService().getSystemOfUnits().getUnit(quantityType);
+    }
 }
