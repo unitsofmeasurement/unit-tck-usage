@@ -21,7 +21,7 @@ jobs:
       - checkout
         
       # run tests!
-      - run: mvn test -Dtec.units.tck.profile=$PROFILE
+      - run: mvn test
       
       # copy TXT result to HTML report folder
       - run:
