@@ -31,7 +31,6 @@ jobs:
       - store_artifacts:
          path: ~/repo/./target/tck-output
 workflows:
-  version: 2
-  build_only:
+  test:
     jobs:
       - build
