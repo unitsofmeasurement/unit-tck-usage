@@ -32,7 +32,7 @@ jobs:
          path: ~/repo/./target/tck-output
          
 workflows:
-  version: 2
+  version: 2.1
   test_tck:
     jobs:
       - test
