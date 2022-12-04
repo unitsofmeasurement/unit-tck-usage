@@ -4,7 +4,7 @@
 #
 version: 2
 jobs:
-  test:
+  build:
     docker:
       # specify the version you desire here
       - image: cimg/openjdk:17.0.3
@@ -30,8 +30,8 @@ jobs:
       # store test report folder as artifact
       - store_artifacts:
          path: ~/repo/./target/tck-output
-         
 workflows:
+  version: 2
   test_tck:
     jobs:
-      - test
+      - build
