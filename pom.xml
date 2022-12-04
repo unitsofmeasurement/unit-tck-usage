@@ -81,18 +81,6 @@
         </repository>       
     </repositories>
 
-  <!-- Deployment to public servers -->
-    <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-        <repository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
-    </distributionManagement>
-
 	<dependencies>
 		<dependency>
 			<groupId>tech.units</groupId>
