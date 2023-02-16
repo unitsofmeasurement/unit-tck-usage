@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: cimg/openjdk:17.0.3
+      - image: cimg/openjdk:17.0.6
      
     working_directory: ~/repo
 
@@ -21,11 +21,14 @@ jobs:
       - checkout
         
       # run tests!
-      - run: mvn test
+      - run:
+          name: Test
+          command: mvn test
       
       # copy TXT result to HTML report folder
       - run:
-         cp ~/repo/./target/*.txt ~/repo/./target/tck-output
+          name: Copy Results
+          command: cp ~/repo/./target/*.txt ~/repo/./target/tck-output
 
       # store test report folder as artifact
       - store_artifacts:
