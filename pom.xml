@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>tech.uom</groupId>
 		<artifactId>uom-parent</artifactId>
-		<version>2.1.3</version>
+		<version>2.2-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>unit-tck-usage</artifactId>
@@ -15,9 +15,8 @@
 	<name>JSR 385 - TCK Usage Demo</name>
 	<description>JSR 385 provides an API for representing, transporting, and performing comprehensive calculations with
         Units of Measurement.
-        This module executes the JSR 385 TCK and tests the current JSR 385 Reference Implementation. based on Java 8 and above.
+        This module executes the JSR 385 TCK and tests the current JSR 385 Reference Implementation.
     </description>
-	<version>2.1.1</version>
 
 	<licenses>
 		<license>
@@ -41,14 +40,14 @@
 		<api.artifactId>unit-api</api.artifactId>
 
 		<!-- ************ Other settings, Should normally not be changed. ************ -->
-		<tck.version>2.1.1</tck.version>
+		<tck.version>2.2-SNAPSHOT</tck.version>
 		<jdkVersion>11</jdkVersion>
 		<maven.compile.targetLevel>${jdkVersion}</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<testng.version>7.1.0</testng.version>
-		<reflections.version>0.9.12</reflections.version>
+		<reflections.version>0.10.2</reflections.version>
 	</properties>
 
 	<ciManagement>
@@ -158,7 +157,6 @@
 					<verbose>true</verbose>
 				</configuration>
 			</plugin>
-
 		</plugins>
 	</build>
 </project>
