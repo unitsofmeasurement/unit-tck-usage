@@ -9,4 +9,5 @@ buildNumber.properties
 /.settings/
 /.classpath
 /.project
+/.idea
 /test-output/
