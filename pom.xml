@@ -125,7 +125,7 @@
             <artifactId>maven-compiler-plugin</artifactId>
             <version>3.8.1</version>
             <configuration>
-				<release>${jdkVersion}</release>
+				<release>8</release>
 				<source>${jdkVersion}</source>
 				<target>${jdkVersion}</target>
 				<excludes>
