@@ -27,20 +27,20 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package tech.units.tckusage;
-
-import static org.testng.Assert.assertEquals;
-
-import javax.tools.Tool;
-import org.testng.annotations.Test;
-import tech.units.tck.TCKRunner;
-
-public class RunTCKTest{
-
-    @Test
-    public void runTCK(){
-        final Tool runner = new TCKRunner();
-        int returnCode = runner.run(System.in, System.out, System.err, new String[0]);
-        assertEquals(0, returnCode);
-    }
+module tech.units.tckusage {
+    exports tech.units.tckusage;
+    
+    requires tech.units.tck;
+    requires tech.units.indriya;
+    requires transitive java.measure;
+    requires transitive tech.uom.lib.common;
+    
+    requires jakarta.inject;
+    requires java.compiler;
+    requires org.reflections;
+    
+    uses tech.units.tck.util.ServiceConfiguration;
+    
+    provides tech.units.tck.util.ServiceConfiguration with
+    tech.units.tckusage.TestConfiguration;
 }

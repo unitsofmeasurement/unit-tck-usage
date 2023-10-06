@@ -1,6 +1,6 @@
 /*
- * Units of Measurement TCK
- * Copyright (c) 2014-2019, Jean-Marie Dautelle, Werner Keil, Otavio Santana.
+ * Units of Measurement TCK Usage Demo
+ * Copyright (c) 2014-2023, Werner Keil and others.
  *
  * All rights reserved.
  *
