@@ -7,14 +7,7 @@ jobs:
   test:
     docker:
       # specify the version you desire here
-      # - image: cimg/openjdk:8-jdk (Try to use Java 8)
       - image: cimg/openjdk:8.0.362
-      #- image: cimg/openjdk:11.0.19
-      
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/postgres:9.4
 
     working_directory: ~/repo
 
